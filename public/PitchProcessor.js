@@ -1,4 +1,5 @@
-import init, { WasmPitchDetector } from "./wasm-audio/wasm_audio.js";
+import "./TextEncoder.js";
+import init, { WasmPitchDetector } from "./rust-wasm-audio/rust_wasm_audio.js";
 
 class PitchProcessor extends AudioWorkletProcessor {
   constructor() {

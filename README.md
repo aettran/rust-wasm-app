@@ -1,13 +1,52 @@
-# Sample React Application that interacts with web assembly for Audio Processing
+# A sample react application that can interact with WebAssembly for audio processing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Our application is going to detect and show the current pitch in real time. Audio analysis is being done with Rust WebAssembly module.
 
+The popularity of WebAssembly will surely continue to grow; however, it’s not suitable for all web development. While many programming languages compile to Wasm, I chose Rust for this example. Rust was created by Mozilla in 2010 and is growing in popularity. Rust occupies the top spot for “most-loved language” in the 2020 developer survey from Stack Overflow.
+
+* First and foremost, Rust has a small runtime which means less code is sent to the browser when a user accesses the site, helping keep the website footprint low.
+* Rust has excellent Wasm support, supporting high-level interoperability with JavaScript.
+* Rust provides near C/C++-level performance, yet has a very safe memory model
+* Rust is not garbage-collected. This means that Rust code is fully in control of when memory is allocated and cleaned up, allowing consistent performance—a key requirement in real-time systems.
 
 ## Available Scripts
 
+This tutorial assumes you have Node.js installed.
+
+### Get Rust
+
+You can follow these instructions to build the [Rust](https://www.rust-lang.org/tools/install) chain for development.
+
+### Install WebAssembly Components
+
+`wasm-pack` allows you to build, test, and publish Rust-generated WebAssembly components. If you haven’t already, [install wasm-pack](https://rustwasm.github.io/wasm-pack/installer/).
+
+### Build WebAssembly Module
+
+When developing Rust applications, the usual build procedure is to invoke a build using `cargo build`. However, we are generating a Wasm module, so we’ll make use of `wasm-pack`, which provides simpler syntax when targeting Wasm.
+```
+wasm-pack build --target web
+```
+
+If successful, an npm module is created under ./pkg. This is a JavaScript module with its very own auto-generated package.json. This can be published to the npm registry if desired.
+
+To keep things simple for now, we can simply copy and paste this pkg under our folder public/wasm-audio:
+
+```
+cp -R ./wasm-audio/pkg ./public/wasm-audio
+```
+
+With that, we have created a Rust Wasm module ready to be consumed by the web app!
+
+
+## Run Application
+
 In the project directory, you can run:
 
-### `npm start`
+### `yarn`
+Install dependencies from package.json
+
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
