@@ -1,6 +1,6 @@
-# A sample react application that can interact with WebAssembly for audio processing
+# A simple react application that can interact with WebAssembly for audio processing
 
-Our application is going to detect and show the current pitch in real time. Audio analysis is being done with Rust WebAssembly module.
+This application is going to detect and show the current pitch in real time. Audio analysis is being done with Rust WebAssembly module.
 
 The popularity of WebAssembly will surely continue to grow; however, it’s not suitable for all web development. While many programming languages compile to Wasm, I chose Rust for this example. Rust was created by Mozilla in 2010 and is growing in popularity. Rust occupies the top spot for “most-loved language” in the 2020 developer survey from Stack Overflow.
 
